@@ -1,0 +1,26 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personaliza tu Remera</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="shirt-container">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_766940-MLA73611188794_122023-O.webp" alt="Remera" id="shirt">
+            <div id="text-overlay" class="text-overlay"></div>
+        </div>
+        <div class="controls">
+            <input type="text" id="text-input" placeholder="Escribe tu texto aquí">
+            <input type="color" id="color-picker" value="#000000">
+            <label for="font-size">Tamaño:</label>
+            <input type="range" id="font-size" min="10" max="50" value="20">
+            <label for="rotate">Rotar:</label>
+            <input type="range" id="rotate" min="0" max="360" value="0">
+            <button onclick="addText()">Agregar Texto</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
