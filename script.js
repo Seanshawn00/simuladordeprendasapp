@@ -76,5 +76,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Guardar el diseño como JPG
+    function saveDesign() {
+        const shirtContainer = document.querySelector('.shirt-container');
+
+        // Usar html2canvas para capturar el diseño
+        html2canvas(shirtContainer).then((canvas) => {
+            // Convertir el canvas a una imagen JPG
+            const imgData = canvas.toDataURL('image/jpeg');
+
+            // Crear un enlace para descargar la imagen
+            const link = document.createElement('a');
+            link.href = imgData;
+            link.download = 'remera_personalizada.jpg'; // Nombre del archivo
+            link.click();
+        });
+    }
+
     window.addText = addText;
+    window.saveDesign = saveDesign;
 });
