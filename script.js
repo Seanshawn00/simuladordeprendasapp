@@ -4,8 +4,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const colorPicker = document.getElementById('color-picker');
     const fontSizeInput = document.getElementById('font-size');
     const rotateInput = document.getElementById('rotate');
+    const shirtImage = document.getElementById('shirt');
 
     let currentTextElement = null;
+
+    // Cargar la imagen de la remera en base64
+    const imageUrl = 'https://http2.mlstatic.com/D_NQ_NP_766940-MLA73611188794_122023-O.webp';
+    fetch(imageUrl)
+        .then(response => response.blob())
+        .then(blob => {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                shirtImage.src = reader.result; // Asignar la imagen en base64
+            };
+            reader.readAsDataURL(blob);
+        })
+        .catch(error => console.error('Error al cargar la imagen:', error));
 
     function addText() {
         const text = textInput.value.trim();
@@ -76,6 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Eliminar el texto seleccionado
+    function deleteText() {
+        if (currentTextElement) {
+            textOverlay.removeChild(currentTextElement); // Eliminar el texto
+            currentTextElement = null; // Limpiar la referencia
+        }
+    }
+
     // Guardar el diseño como JPG
     function saveDesign() {
         const shirtContainer = document.querySelector('.shirt-container');
@@ -94,5 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addText = addText;
+    window.deleteText = deleteText;
     window.saveDesign = saveDesign;
 });
